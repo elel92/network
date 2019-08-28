@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Scanner;
 
 public class ChatClient {
@@ -33,11 +34,10 @@ public class ChatClient {
 			new ChatClientThread(br).start();
 			
 			while(true) {
-				System.out.print(">> ");
+				
 				String input = sc.nextLine();
 				
 				if(input.equals("quit")) {
-					
 					System.out.println("클라이언트로부터 연결 끊김");
 					
 					pw.println("quit");
@@ -50,6 +50,14 @@ public class ChatClient {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
+			if(socket != null && socket.isClosed() == false) {
+				try {
+					socket.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
 			if(sc != null) {
 				sc.close();
 			}

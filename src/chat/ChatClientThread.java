@@ -2,7 +2,6 @@ package chat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.SocketException;
 
 public class ChatClientThread extends Thread {
 	private BufferedReader bufferedReader;
