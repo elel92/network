@@ -11,7 +11,8 @@ import java.net.SocketException;
 import java.util.Scanner;
 
 public class ChatClient {
-	private static String SERVER_IP = "192.168.1.46";
+	//private static String SERVER_IP = "192.168.1.46";
+	private static String SERVER_IP = "127.0.0.1";
 	private static int SERVER_PORT = 9000;
 	
 	public static void main(String[] args) {
